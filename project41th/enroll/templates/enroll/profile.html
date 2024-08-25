@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Welcome to User Profile</h2>
+    <p>welcome {{name}} sir!</p>
+    <div><a href="{% url 'logout'%}">LogOut</a></div> 
+    {% comment %} <a href="{% url 'changepassword'%}">Change Password with old</a> {% endcomment %}
+    <!--<a href="{% url 'changepass'%}">Change Password without Old </a> -->
+</body>
+</html>

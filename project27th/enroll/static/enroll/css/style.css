@@ -1,0 +1,25 @@
+#main {
+    background-color:grey;
+    position:center;
+    margin:50px;
+    padding:50px;
+    width:50%;
+    height:50%;
+    border:1px solid black;
+    border-radius:20px;
+    
+    
+}
+.errorlist{
+    list-style-type:none;
+    border:1px solid black;
+    background-color:orangered;
+    width:110px;
+    border-radius:10px;
+    font-size:12px;
+    margin-left: 50px;
+}
+#btn {
+    border:1px solid black;
+    margin-left:100px;
+}

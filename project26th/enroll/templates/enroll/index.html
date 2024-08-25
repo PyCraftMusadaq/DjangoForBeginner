@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="{% static 'enroll/css/style.css' %}">
+</head>
+<body>
+    <div id = "main">
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {{form.none_field_errors}}
+        {% for field in form%}
+        <div>
+            {{field.label_tag}}
+            {{field}}
+            {{field.errors| striptags}}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit" id ="btn">
+    </form>
+</div>
+</body>
+</html>

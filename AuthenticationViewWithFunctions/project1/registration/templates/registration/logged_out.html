@@ -1,0 +1,5 @@
+<!-- templates/base.html or any template where you want to include the logout button -->
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>

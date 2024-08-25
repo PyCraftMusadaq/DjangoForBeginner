@@ -1,0 +1,112 @@
+{% extends 'student/base.html'%}
+{% block content %}
+<div class="row">
+        <div class="col-md-4">
+            <div class="form-section">
+                <h2>Add New Student</h2>
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    {{error}}
+                    {% endfor %}
+                    {% endif %}
+                    {% for field in form %}
+                    {{field.label_tag}} {{field}}{{field.errors | striptags}}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="table-section">
+                <h2>Show Student Information</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in students %}
+                        <tr>
+                            <td>{{record.id}}</td>
+                            <td>{{record.name}}</td>
+                            <td>{{record.email}}</td>
+                            <td>{{record.password}}</td>
+                            <td>
+                                <form action="{% url 'update' record.id %}">
+                                 <input type="submit" class="btn btn-warning btn-sm d-inline" value="Edit">
+                                </form>
+                               <form action="{% url 'delete' record.id %}" method="POST">
+                                {% csrf_token %}
+                                 <input type="submit" class="btn btn-danger btn-sm d-inline" value="Delete">
+                               </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+<div class="row">
+        <div class="col-md-4">
+            <div class="form-section">
+                <h2>Add New Student</h2>
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    {{error}}
+                    {% endfor %}
+                    {% endif %}
+                    {% for field in form %}
+                    {{field.label_tag}} {{field}}{{field.errors | striptags}}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="table-section">
+                <h2>Show Student Information</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in students %}
+                        <tr>
+                            <td>{{record.id}}</td>
+                            <td>{{record.name}}</td>
+                            <td>{{record.email}}</td>
+                            <td>{{record.password}}</td>
+                            <td>
+                                {% comment %} <a href="{% url 'updatestudent' record.id %}" class="btn btn-warning btn-sm d-inline">Edit</a> {% endcomment %}
+                                <form action="" method="POST">
+                                <a href ="{% url 'delete' record.id %}" class="btn btn-danger btn-sm d-inline">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

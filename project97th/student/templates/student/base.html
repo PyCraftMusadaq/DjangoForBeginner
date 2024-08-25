@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Based View ModelForm CRUD Project</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .header {
+            background-color: #f8d7da;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-section, .table-section {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #e9ecef;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section h2, .table-section h2 {
+            background-color: #d1ecf1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1> Based Class Based View ModelForm CRUD Project</h1>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-section">
+                <h2>Add New Student</h2>
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    {{error}}
+                    {% endfor %}
+                    {% endif %}
+                    {% for field in form %}
+                    {{field.label_tags}} {{field}}{{field.errors | striptags}}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="table-section">
+                <h2>Show Student Information</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in students %}
+                        <tr>
+                            <td>{{record.id}}</td>
+                            <td>{{record.name}}</td>
+                            <td>{{record.email}}</td>
+                            <td>{{record.password}}</td>
+                            <td>
+                                <a href="{% url 'updatestudent' record.id %}" class="btn btn-warning btn-sm d-inline">Edit</a>
+                                <a href ="{% url 'deletestudent' record.id %}" class="btn btn-danger btn-sm d-inline">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

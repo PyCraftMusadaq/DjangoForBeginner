@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if form.non_field_errors  %}
+        {% for error in form.non_field_errors  %}
+        <span class="error">{{error}}</span>
+        {% endfor %}
+        {% endif %}
+         {% for field in form  %}
+         {{field.label_tag}}
+         {{field}}
+         <br> <br>
+         {% endfor %}
+         {{field.errors}}
+         <br><br>
+        <input type="submit" value="Login">
+    </form>
+    <a href="{% url 'signup'%}">SignUp</a>
+    {% if messages  %}
+     {% for message in messages %}
+     {{message.label_tag}}
+     {{message}}
+     {% endfor %}
+    {% endif %}
+</body>
+</html>

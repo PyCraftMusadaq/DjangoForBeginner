@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Card</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result Card</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID:</th>
+                <th>Name:</th>
+                <th>Roll No:</th>
+                <th>City:</th>
+                <th>Marks:</th>
+                <th>Pass Date:</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in student %}
+        <tr>
+          <td>{{ record.id }}</td>
+          <td>{{ record.name }}</td>
+          <td>{{ record.roll_number }}</td>
+          <td>{{ record.city }}</td>
+          <td>{{ record.marks }}</td>
+          <td>{{ record.pass_date }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</body>
+</html>

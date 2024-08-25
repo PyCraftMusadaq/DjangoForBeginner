@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome Sir {{request.user.username}}</h1>
+    <p>This is your profile page</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'admin:logout' %}">Logout</a>
+    </form>
+    <a href="{% url 'password_change'%}">change Password</a>
+</body>
+</html>

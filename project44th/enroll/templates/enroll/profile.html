@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Welcome {{name}}</h2>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors  %}
+        {% for error in form.non_field_errors  %}
+        {{error}}
+        {% endfor %}
+        {% endif %}
+        {% for field in form  %}
+        {{field.label_tag}}{{field}}{{field.errors | striptags}} <br> <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Save"> 
+        {% comment %} {{form.as_p}} {% endcomment %}
+        {% if messages %}
+        {% for message in messages  %}
+        {{message}}
+        {% endfor %}
+        {% endif %}
+        
+        {% if users != None  %}
+        <h2>List of Users</h2>
+        {% for user in users  %}
+        <a href="{% url 'user_details' user.id %}">{{user.username}}</a> <br> <br>
+        {% endfor %}
+        {% endif %}
+    </form>
+    <a href="{% url 'logout'%}">Logout</a>
+    <br>
+    
+    <a href="{% url 'changepassword1'%}">ChangePassword</a>
+    <br>
+    <a href="{% url 'changepassword2'%}">ChangePassword without Old password</a>
+</body>
+</html>

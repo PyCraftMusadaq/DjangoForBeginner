@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'enroll/css/style.css'%}">
+</head>
+<body>
+    <div>
+     <h1>Data From Django </h1>
+     {% if data %}
+     <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student Number</th>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Student Pass</th>
+            </tr>
+        </thead>
+        
+        {% for dt in data%}
+        <tbody></tbody>
+        <tr class="row">
+            <td >{{dt.id}}</td>
+            <td>{{dt.student_id}}</td>
+            <td>{{dt.student_name}}</td>
+            <td>{{dt.student_name}}</td>
+            <td>{{dt.student_pass}}</td>
+        </tr>
+    {% endfor %}
+        <tfoot>
+        </tfoot>
+     </table>
+    {% else %}
+    <h2>No Data Found </h2>
+     {% endif %}
+    </div>
+</body>
+</html>

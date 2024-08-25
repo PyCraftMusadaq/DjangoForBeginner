@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        a{
+            border:1px solid black;
+            color:white;
+            background-color:black;
+            border-radius:20px;
+            padding:10px;
+        }
+
+        .btn{
+            border:1px solid black;
+            color:white;
+            background-color:black;
+            border-radius:20px;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors  %}
+        <p>{{error}}</p>
+        {% endfor %}
+        {% endif %}
+        {% for field in form  %}
+        {{field.label_tag}} 
+        {{field}} 
+        {{field.errors | striptags}}
+        <br>
+        <br>
+        {% endfor %}
+        <input type="submit" value="Login" class="btn">
+    </form>
+    {% if messages %}
+    {% for message in messages  %}
+    {{message}}
+    {% endfor %}
+    {% endif %}
+    <br><br>
+    <a href="{% url 'signup'%}">SignUp</a>
+    <br> <br> <br>
+    
+
+</body>
+</html>

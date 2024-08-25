@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List View</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in students  %}
+            <tr>
+                <td>{{record.id}}</td> 
+                <td>{{record.name}}</td> 
+                <td>{{record.roll}}</td> 
+                <td>{{record.course}}</td> 
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <h1>Topper of the Batch</h1>
+    {% for field in Toper  %}
+    <h3>{{field}}</h3>
+    {% endfor %}
+</body>
+</html>

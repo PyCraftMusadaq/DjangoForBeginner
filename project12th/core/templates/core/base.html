@@ -1,0 +1,25 @@
+<DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock title %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block corecss %}
+        <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+        {% endblock corecss%}
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>AboutMe</li>
+                <li>Course</li>
+            </ul>
+        </nav>
+        {% block content %}{% endblock content %}
+        <script src="" async defer></script>
+    </body>
+</html>

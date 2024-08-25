@@ -1,0 +1,9 @@
+body{
+    background-color: darkslategray;
+    color:antiquewhite;
+}
+.message{
+    color:black;
+    background-color:darkgoldenrod;
+    border:1px solid black;
+}
